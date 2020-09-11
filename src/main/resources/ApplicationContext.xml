@@ -3,8 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<import resource="t1000_context.xml"/>	
+	
 	<bean id="post_processor" class='ua.training.spring.CustomBeanPostProcessor'/>
 	
-	<import resource="t1000_context.xml"/>	
+	<bean id='t1000Conveyer' class='ua.training.spring.bean.conveyer.T1000Conveyer'>
+		<lookup-method name='createRobot' bean='t1000'/>
+	</bean>
 
 </beans>

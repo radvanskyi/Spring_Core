@@ -34,7 +34,7 @@ public class ModelT1000 extends BaseModel implements InitializingBean, Disposabl
 	}
 
 	@Override
-	public void fire() {
+	public void action() {
 		getHead().calc();
 		getHand().catchSomething();
 		getLeg().go();
