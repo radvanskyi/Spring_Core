@@ -10,5 +10,21 @@
 	<bean id='t1000Conveyer' class='ua.training.spring.bean.conveyer.T1000Conveyer'>
 		<lookup-method name='createRobot' bean='t1000'/>
 	</bean>
+	
+	<bean id='t1000Pool' class='ua.training.spring.bean.pool.T1000Pool'>
+		<property name='robotCollection'>
+			<list>
+			
+				<ref bean='t1000'/>
+				
+				<bean class='ua.training.spring.bean.robot.ModelT1000' parent='baseModel'>
+					<constructor-arg value='gold' index='3'/>
+					<constructor-arg value='2007' index='4'/>
+					<constructor-arg value='false' index='5'/>
+				</bean>
+				
+			</list>
+		</property>
+	</bean>
 
 </beans>
