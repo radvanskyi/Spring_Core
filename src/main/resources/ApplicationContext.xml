@@ -1,30 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-	<import resource="t1000_context.xml"/>	
+	<context:annotation-config />
 	
-	<bean id="post_processor" class='ua.training.spring.CustomBeanPostProcessor'/>
-	
-	<bean id='t1000Conveyer' class='ua.training.spring.bean.conveyer.T1000Conveyer'>
-		<lookup-method name='createRobot' bean='t1000'/>
-	</bean>
-	
-	<bean id='t1000Pool' class='ua.training.spring.bean.pool.T1000Pool'>
-		<property name='robotCollection'>
-			<list>
-			
-				<ref bean='t1000'/>
-				
-				<bean class='ua.training.spring.bean.robot.ModelT1000' parent='baseModel'>
-					<constructor-arg value='gold' index='3'/>
-					<constructor-arg value='2007' index='4'/>
-					<constructor-arg value='false' index='5'/>
-				</bean>
-				
-			</list>
-		</property>
-	</bean>
+	<import resource="toshiba.xml" />
+	<import resource="sony.xml" />
+
+
+	<bean id="t1000" class='ua.training.spring.bean.robot.ModelT1000' scope="prototype"/>
+
 
 </beans>
